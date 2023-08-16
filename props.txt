@@ -1,0 +1,3 @@
+
+// buttons props (please do not spell mistake then you will not get perticular functionality)
+{ title, className, type, onClick, props }
