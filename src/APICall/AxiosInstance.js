@@ -6,6 +6,7 @@ const instance = axios.create({
   baseURL: BaseUrl,
   "Content-Type": "application/json",
 });
+
 instance.interceptors.request.use((config) => {
   config.headers["Authorization"] =
     "Bearer " + localStorage.getItem("user_token");
@@ -14,15 +15,11 @@ instance.interceptors.request.use((config) => {
 
 instance.interceptors.response.use(
   function (response) {
-    // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
     return response;
   },
   function (error) {
-    // Any status codes that falls outside the range of 2xx cause this function to trigger
-    // Do something with response error
     if (error.response.status === 401 || error.response.status === 403) {
-      // Redirect to login page if there's a 401 error
       window.location.replace(`${process.env.PUBLIC_URL}/`);
       localStorage.clear();
     }
