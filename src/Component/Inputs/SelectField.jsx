@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const SelectField = ({ onHandleSelect }) => {
   return (
@@ -20,6 +21,10 @@ const SelectField = ({ onHandleSelect }) => {
       </option>
     </select>
   );
+};
+
+SelectField.propTypes = {
+  onHandleSelect: PropTypes.func,
 };
 
 export default SelectField;
